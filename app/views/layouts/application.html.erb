@@ -26,8 +26,7 @@
                       <%= render 'shared/navbar' %>
                    <% end %>
                   
-                    <p class="notice"><%= notice %></p>
-                    <p class="alert"><%= alert %></p>
+                    <%= render 'shared/message' %>
                     <%= yield %>
 
                     <% unless current_page?(new_user_session_path) || current_page?(new_user_registration_path) %>
