@@ -14,3 +14,7 @@
  *= require_tree .
  *= require_self
  */
+ .profile-round{
+    border-radius: 50%;
+    width: 200px;
+ }
