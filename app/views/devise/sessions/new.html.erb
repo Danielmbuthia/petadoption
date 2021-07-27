@@ -41,9 +41,9 @@
                                   <a href="index.html" class="btn btn-google btn-user btn-block">
                                       <i class="fab fa-google fa-fw"></i> Login with Google
                                   </a>
-                                  <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                      <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                  </a>
+                                  <%= link_to user_facebook_omniauth_authorize_path,  method: :post, class: 'btn btn-facebook btn-user btn-block' do %>
+                                    <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                  <% end %>
                               <% end %>
                               <hr>
                               <div class="text-center">
