@@ -24,10 +24,31 @@
             <div class="card-body">
                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
                   <%= render "devise/shared/error_messages", resource: resource %>
-                  <div class="col-md-12">
-                    <label class="form-label">Email</label>
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+                  <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                          <label class="form-label">Fullname</label>
+                          <%= f.text_field :fullname, autofocus: true, autocomplete: "Fullname",class: "form-control form-control-user", placeholder: "Enter your name" %>
+                      </div>
+                      <div class="col-sm-6">
+                          <label class="form-label">Email</label>
+                          <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control form-control-user", placeholder: "Email Address"%>
+                      </div>
                   </div>
+                  <div class="form-group row">
+                     <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label class="form-label">Organization</label>
+                        <%= f.text_field :organization, autofocus: true, autocomplete: "Organization",class: "form-control form-control-user", placeholder: "Enter your organization"%>
+                     </div>
+                     <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label class="form-label">Language</label>
+                        <%= f.text_field :language, autofocus: true, autocomplete: "Language",class: "form-control form-control-user", placeholder: "Enter your Language"%>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                      <label class="form-label">About You</label>
+                      <%= f.text_area :about,size: "70x5", autofocus: true, autocomplete: "About",class: "form-control form-control-user", placeholder: "Tell us about you"%>
+                  </div>
+                  <hr>
                   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
                   <% end %>
