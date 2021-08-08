@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'pets/new'
+  get 'pets/create'
+  get 'pets/edit'
+  get 'pets/update'
+  get 'pets/show'
   get '/dashboard', to: 'users#dashboard'
   post '/edit/user', to: 'users#update'
   devise_for :users, path: '',controllers: { omniauth_callbacks: 'omniauth_callbacks',registrations: 'registrations' },

@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   
+  has_many :pets
+  
     def self.from_omniauth(auth)
       user = User.where(email: auth.info.email).first
       if user
