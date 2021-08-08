@@ -17,10 +17,17 @@
 
  @import "bootstrap/scss/bootstrap";
  @import "all";
+ @import "bg";
  @import "sb-admin-2";
  @import "noty/src/noty";
  @import "noty/src/themes/sunset";
+ @import "users";
  .profile-round{
     border-radius: 50%;
     width: 200px;
  }
+ .profile-round-small{
+   border-radius: 50%;
+   width: 80px;
+   height: 80px;
+}
