@@ -1,2 +1,98 @@
-<h1>Pets#edit</h1>
-<p>Find me in app/views/pets/edit.html.erb</p>
+<section class="py-4">
+  <div class="container">
+
+    <p class="subtitle text-primary">
+      Please continue to fill out the fields
+    </p>
+    <h1 class="h2">Pet Details</h1>
+
+    <%= form_for @pet do |f| %>
+      <div class="form-container row">
+        <!-- Information Column -->
+        <div class="col-lg-4">
+          
+          <p class="text-muted text-sm">Hey this is information about the form you wanna tell your user. Hey this is information about the form you wanna tell your user</p>
+        </div>
+        <!-- Form Column -->
+        <div class="ml-auto col-lg-7">
+
+          <div class="form-group">
+            <label>Pet's Name</label>
+            <%= f.text_field :title, autocomplete: 'title', class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <label>Pet's Category</label>
+            <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id]}, selected: @pet.category_id), { wraper: {} }, { class: 'custom-select mb-3'}) %>
+          </div>
+
+          <div class="form-group">
+            <label>Pet Description</label>
+            <%= f.rich_text_area :pet_description, class: 'form-control', rows: '20' %>
+            <small class="form-text text-muted">Tell your user what you need them to write about. Tell your user what you need them to write about</small>
+          </div>
+
+          <div class="form-group">
+            <label>Pet Youtube URL</label>
+            <%= f.text_field :video, autocomplete: 'video', class: 'form-control' %>
+          </div>
+
+          <div class="form-group ">
+            <%= f.check_box :is_sprayed, class: 'myclass1 ml-1 mt-2' %>
+            <%= f.label :is_sprayed, class: 'myclass1' do %>
+              Spayed / Neutered
+            <% end %>
+            <small class="form-text text-muted">Neutered or Spayed if the dog has been fixed, canot reproduce. Check this box.</small>
+          </div>
+
+          <!-- Photo Upload Box from Dropzone.js-->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="dropzone" action="/pets/<%= @pet.id %>/upload_pet_photos" id="petDropzone">
+                <div class="dz-message d-flex flex-column">
+                  <i class="material-icons text-primary">cloud_upload</i>
+                  Drag & Drop Or Click here to upload photos
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- List all photos goes here-->
+          <div class="row p-3">
+            <% @pet.pet_photos.each do |photo| %>
+              <div class="col-lg-4 p-1">
+                <%= image_tag url_for(photo), class: 'pet-image' %>
+                <div class="card-image-overlay-bottom">
+                  <%= link_to delete_pet_photo_pet_url(pet_photo_id: photo.id, id: @pet.id), method: :delete, data: {confirm: "Are you Sure!", class: 'pet-delete'} do %>
+                    <div class="pet-delete">Delete</div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- END Photo Uplaod Box from Dropzone.js-->
+          <div class="ml-auto float-right mr-2 mt-3">
+            <%= f.submit "Publish", class: 'btn btn-primary' %>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+
+
+  </div>
+</section>
+
+
+<script>
+  Dropzone.options.petDropzone = {
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 2, // MB
+    acceptedfFiles: 'image/*',
+    init: function() {
+      this.on('complete', function (file) {
+        location.reload();
+      })
+    }
+  };
+</script>
