@@ -1,0 +1,269 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+        <ul class="nav nav-pills horizontal-scroll-menu">
+                <li class="nav-item">
+                    <a class="nav-link active n-m-l" aria-current="page" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pets you adopted</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pets you put for adoption</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">setting</a>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </li>
+        </ul>
+    </div>
+    <div class="row mt-5">
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Profile</h6> 
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                     <div class="h-100 py-2">
+                          <div class="row align-items-center mb-4">
+                              <div class="col-4">
+                                  <%= image_tag avatar_url(current_user),class:'profile-round-small' %>
+                              </div>
+                                <div class="col-8">
+                                     <%= form_for :user, url:edit_user_url(@user), action: :update, method: :post  do |f| %>
+                                       <div class="custom-file">
+                                        <%= f.file_field :avatar, class:"custom-file-input", onChange: "this.form.submit()" %>
+                                        <label for="customFileLang" class="custom-file-label">Change Avatar</label>
+                                        </div>
+                                     <% end %>
+                                </div>
+                            </div>
+                    </div>
+                            <hr>
+                     <div class="h-100 py-2">
+                      <!-- fullname goes here -->
+                            <div class="row no-gutters align-items-center">
+                              <div class="col">
+                                  <div class="text-sm font-weight bold text-gray-600 text-primary text-uppercase mb-1">fullname</div>
+                                  <div class="text-sm mb-0 text-primary">
+                                      <%= current_user.fullname %>
+                                  </div>
+                              </div>
+                                <div class="col-auto">
+                                     <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseFullName" role="button" aria-expanded="false" aria-controls="collapseFullName">
+                                        <i class="fas fa-edit text-gray-500"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                  <%= form_for :user, url: edit_user_url(@user), action: :update, method: :post, html: { id:'collapseFullName', class:'collapse'} do |f| %>
+                                     <%=  f.text_field :fullname, placeholder: current_user.fullname, class:"form-control" %>
+                                     <%= f.submit 'Save Changes', class: "btn btn-primary btn-sm mt-3"%>
+                                     <button type="button" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#collapseFullName" role="button" aria-expanded="false" aria-controls="collapseFullName">Cancel</button>
+                            
+                                  <% end %>
+                                </div>
+                            </div>
+                    
+                    </div>
+                    <hr>
+                    <div class="h-100 py-2">
+                      <!-- organization goes here -->
+                    
+                            <div class="row no-gutters align-items-center">
+                              <div class="col">
+                                 <div class="text-sm font-weight bold text-gray-600 text-primary text-uppercase mb-1">organization</div>
+                                  <div class="text-sm mb-0 text-primary">
+                                      <%= current_user.organization %>
+                                  </div>
+                              </div>
+                                <div class="col-auto">
+                                     <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseOrganization" role="button" aria-expanded="false" aria-controls="collapseOrganization">
+                                        <i class="fas fa-edit text-gray-500"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                  <%= form_for :user, url: edit_user_url(@user), action: :update, method: :post, html: { id:'collapseOrganization', class:'collapse mt-3'} do |f| %>
+                                     <%=  f.text_field :organization, placeholder: current_user.organization, class:"form-control" %>
+                                      <%= f.submit 'Save Changes', class: "btn btn-primary btn-sm mt-3"%>
+                                     <button type="button" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#collapseOrganization" role="button" aria-expanded="false" aria-controls="collapseOrganization">Cancel</button>
+                                  <% end %>
+                                </div>
+                            </div>
+                        
+                    </div>
+                    <hr>
+                    <div class="h-100 py-2">
+                      <!-- about goes here -->
+                    
+                            <div class="row no-gutters align-items-center">
+                              <div class="col">
+                                  <div class="text-sm font-weight bold text-gray-600 text-primary text-uppercase mb-1">About</div>
+                                  <div class="text-sm mb-0 text-primary">
+                                      <%= current_user.about %>
+                                  </div>
+                              </div>
+                                <div class="col-auto">
+                                     <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseAbout" role="button" aria-expanded="false" aria-controls="collapseAbout">
+                                        <i class="fas fa-edit text-gray-500"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                  <%= form_for :user, url: edit_user_url(@user), action: :update, method: :post, html: { id:'collapseAbout', class:'collapse mt-3'} do |f| %>
+                                     <%=  f.text_area :about, placeholder: current_user.about, class:"form-control" , rows:'3'%>
+                                      <%= f.submit 'Save Changes', class: "btn btn-primary btn-sm mt-3"%>
+                                     <button type="button" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#collapseAbout" role="button" aria-expanded="false" aria-controls="collapseAbout">Cancel</button>
+                                  <% end %>
+                                </div>
+                            </div>
+                    
+                    </div>
+                    <hr>
+
+                    <div class="h-100 py-2">
+                      <!-- Language goes here -->
+                       
+                            <div class="row no-gutters align-items-center">
+                              <div class="col">
+                                  <div class="text-sm font-weight text-gray-600 bold text-primary text-uppercase mb-1">Language</div>
+                                  <div class="text-sm mb-0 text-primary">
+                                      <%= current_user.language %>
+                                  </div>
+                              </div>
+                                <div class="col-auto">
+                                     <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseLanguage" role="button" aria-expanded="false" aria-controls="collapseLanguage">
+                                        <i class="fas fa-edit text-gray-500"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                  <%= form_for :user, url: edit_user_url(@user), action: :update, method: :post, html: { id:'collapseLanguage', class:'collapse mt-3'} do |f| %>
+                                     <%=  f.text_field :language, placeholder: current_user.language, class:"form-control" %>
+                                      <%= f.submit 'Save Changes', class: "btn btn-primary btn-sm mt-3"%>
+                                     <button type="button" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#collapseLanguage" role="button" aria-expanded="false" aria-controls="collapseLanguage">Cancel</button>
+                                  <% end %>
+                                </div>
+                            </div>
+                        
+                    </div>
+                    <hr>
+
+                    <div class="h-100 py-2">
+                      <!-- status goes here -->
+                        
+                            <div class="row no-gutters align-items-center">
+                              <div class="col">
+                                 <div class="text-sm font-weight text-gray-600 bold text-primary text-uppercase mb-1">Status</div>
+                                  <div class="text-sm mb-0 text-primary">
+                                      <% if current_user.status %>
+                                         Online
+                                      <% else %> 
+                                         Offline
+                                      <% end %>
+                                  </div>
+                              </div>
+                                <div class="col-auto">
+                                     <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapseStatus" role="button" aria-expanded="false" aria-controls="collapseStatus">
+                                        <i class="fas fa-edit text-gray-500"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                  <%= form_for :user, url: edit_user_url(@user), action: :update, method: :post, html: { id:'collapseStatus', class:'collapse mt-3'} do |f| %>
+                                     <%=  f.select(:status, options_for_select([["Online",true],["Offline",false]]),{},{class:'form-control'})%>
+                                      <%= f.submit 'Save Changes', class: "btn btn-primary btn-sm mt-3"%>
+                                     <button type="button" class="btn btn-danger mt-3" data-bs-toggle="collapse" href="#collapseStatus" role="button" aria-expanded="false" aria-controls="collapseStatus">Cancel</button>
+                                  <% end %>
+                                </div>
+                            </div>
+                    
+                    </div>
+                    <hr>
+
+                   <div class="h-100 py-2">
+                      <!-- Date Joined goes here -->
+                        
+                            <div class="row no-gutters align-items-center">
+                              <div class="col">
+                                 <div class="text-sm font-weight text-gray-600 bold text-primary text-uppercase mb-1">Date Joined</div>
+                                  <div class="text-sm mb-0 text-primary">
+                                      <%= current_user.created_at.strftime('%b ' '%Y')%>
+                                  </div>
+                              </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="col-xl-8 col-lg-7">
+          <div class="card shadow mb-4">
+             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Dashboard</h6> 
+            </div>
+            <div class="card-body">
+                <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <div class="card">
+                            <%= image_tag 'sample-dog' %>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="card">
+                            <%= image_tag 'sample-dog' %>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="card">
+                            <%= image_tag 'sample-dog' %>
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                </div>
+            </div> 
+            </div>        
+        </div>
+    </div>
+</div>
+
+<script>
+   document.addEventListener('click',function (event) {
+       var makeEditableElement = document.getElementById('makeEditable');
+          targetElement = event.target;
+
+        do {
+            if (targetElement == makeEditableElement) {
+                document.getElementById('makeEditable').classList.add('form-controll')
+                document.getElementById('makeEditable').contentEditable = true;
+            }     
+            targetElement = targetElement.parentNode;
+        } while (targetElement);  
+        document.getElementById('makeEditable').classList.remove('form-controll')
+   });
+</script>

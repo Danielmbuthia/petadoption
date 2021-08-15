@@ -1,0 +1,35 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.nav-pills .nav-link.active {
+    color: #4e73df;
+    background-color: #eaecf4;
+    border-radius: 0px;
+    margin-left: 15px;
+    border-bottom: 3px solid #4e73df
+}
+.nav-pills .nav-link {
+    color: #4e73df;
+    background-color: #e9edf9;
+    border-radius: 0px;
+    margin-left: 15px;
+}
+.n-m-l{
+    margin-left: 0px !important;
+}
+.nav-pills .nav-link:hover,
+.nav-pills .nav-link:active,
+.nav-pills .nav-link:focus{
+    border-bottom: 3px solid #4e73df
+}
+.nav-pills .show > .nav-link {
+    color: #4e73df;
+    background-color: #e9edf9;
+    border-radius: 0px;
+    border-bottom: none !important
+}
+.horizontal-scroll-menu{
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}
