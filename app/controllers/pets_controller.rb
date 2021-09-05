@@ -27,7 +27,7 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update(pets_params)
-      flash[:notice] = "saved"
+      flash[:notice] = "Pet Updated successfully."
     else
       flash[:alert] = "Error, nothing has been saved."
     end

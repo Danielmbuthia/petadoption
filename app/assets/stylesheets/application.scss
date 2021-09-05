@@ -1,4 +1,5 @@
 //= require actiontext
+//= require flickity
  @import "bootstrap/scss/bootstrap";
  @import "all";
  @import "bg";
@@ -59,6 +60,11 @@
    background-color: #fff;
    background-clip: initial;
    transition: none;
+ }
+ .text-block {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c9ceef;
  }
  // End my helper classes
  
@@ -161,3 +167,69 @@
    width: 100%;
    max-width: 300px;
  }
+ // Gallery Pets Section
+.pet-img-row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flexbox-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+.pet-img-col {
+  -ms-flexbox-wrap: 25%;
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+  margin-top: 8px;
+  // For text on image
+  position: relative;
+  text-align: left;
+  color: white;
+  display: none;
+}
+
+.pet-img-col img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.tinted {
+  opacity: 0.6;
+}
+
+.top-left {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 800px) {
+  .pet-img-col {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .pet-img-col {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+.show {
+  display: block;
+}
+// Style for Flickity
+.carousel-cell {
+    width: 33%;
+    height: 300px;
+    margin-right: 3px;
+    border-radius: 2px;
+    counter-increment: carousel-cell;
+    vertical-align: middle;
+    object-fit: cover;
+}
